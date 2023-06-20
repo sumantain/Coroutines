@@ -22,9 +22,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        /*
-        *
-        * */
+        downloadImage()
+    }
+
+    /**
+     * Image downloading in Global Scope Background scope and view updating in Main thread
+     */
+    private fun downloadImage() {
         GlobalScope.launch(Dispatchers.IO) {
             val url = URL("https://webneel.com/wallpaper/sites/default/files/images/08-2018/3-nature-wallpaper-mountain.1366.jpg")
             val connection = url.openConnection() as HttpURLConnection
